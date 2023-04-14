@@ -1,0 +1,31 @@
+<div class="continer">
+<header>
+    <ul>
+      <div class="left-header">
+        <li class="home">Home</li>
+        <li class="border-top-right-radius">
+          <input type="text" id="search" name="search">
+          <label for="search">Search</label>
+        </li>
+      </div>
+      <div class="right-header">
+        <li><a (click)="goto()">Logout</a></li>
+      </div>
+    </ul>
+  </header>
+  <div class="body">
+    <h1>Welcome {{auth.currentUser()}} </h1>
+  </div>
+  <footer>
+    <ul>
+      <li>About</li>
+      <li>Social Hub Emergency Contact </li>
+      <li>Holiday Calendars</li>
+  
+    </ul>
+    <div class="lower">
+      <p class="lower1">© 2023 VWITS All rights reserved.</p>
+      <p class="lower2">All Rights Reserve @VWITS INDIA 2023</p>
+    </div>
+  </footer>
+  </div>
