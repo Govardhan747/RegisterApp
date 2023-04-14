@@ -1,0 +1,121 @@
+<div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+    <div class="container">
+      <div class="row gx-lg-5 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <h1 class="my-5 display-3 fw-bold ls-tight">
+            <span class="text-success">Welcome to Volkswagen</span>
+          </h1>
+          <p style="color: hsl(217, 10%, 50.8%)">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaePo-HaG2S-NmOpZo2_eJHYRwfZ5vL76aCg&usqp=CAU"
+              alt="Trendy Pants and Shoes" class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+          </p>
+        </div>
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="card">
+            <div class="card-body py-5 px-md-5">
+              <form #RegisterForm="ngForm" (ngSubmit)="registerUser()">
+                <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
+                <strong class="text-danger"> {{msg}} </strong>
+                <strong class="text-danger"> {{msg1}} </strong>
+
+                
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input 
+                      type="text"  
+                      placeholder="First Name" 
+                      class="form-control form-control-lg"
+                      [(ngModel)]="user.firstName" 
+                      name="firstName" required pattern 
+                      #first="ngModel" />
+                      <label class="form-label" for="form3Example1">First name</label>
+                      <div *ngIf="first.errors && (first.invalid && first.touched)">
+                        <small class="text-danger" *ngIf="first.errors"> FirstName is Mandatory</small>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input 
+                      type="text"  
+                      class="form-control form-control-lg" 
+                      placeholder="Last Name"
+                      [(ngModel)]="user.lastName" 
+                      name="lastName" required pattern 
+                      #last="ngModel" />
+                      <label class="form-label" for="form3Example2">Last name</label>
+                      <div *ngIf="last.errors && (last.invalid && last.touched)">
+                        <small class="text-danger" *ngIf="last.errors"> LastName is Mandatory</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="form-outline mb-4">
+                  <input 
+                  type="email"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                  placeholder="Enter EmailId" 
+                  class="form-control form-control-lg"
+                  [(ngModel)]="user.emailId"
+                  name="emailId" required
+                  #email="ngModel"/>
+                  <label class="form-label" for="form3Example3">Email address</label>
+                  <div *ngIf="email.errors && (email.invalid && email.touched)">
+                    <small class="text-danger" *ngIf="email.errors['required']"> EmailId is Mandatory</small>
+                    <small class="text-danger" *ngIf="email.errors['pattern']"> and enter the valid email id</small>
+                  </div>
+                </div>
+
+
+                <div class="form-outline mb-4">
+                  <input 
+                  type="password"
+                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                  placeholder="Enter Password"
+                  class="form-control form-control-lg"
+                  [(ngModel)]="user.password" 
+                  name="password" required  
+                  #fpassword="ngModel" />
+                  <label class="form-label" for="form3Example4">Password</label>
+                  <div *ngIf="fpassword.errors && (fpassword.invalid && fpassword.touched)">
+                    <small class="text-danger" *ngIf="fpassword.errors['required']"> Password is Mandatory</small>
+                    <small class="text-danger" *ngIf="fpassword.errors['pattern']"> password must be atleast minimum 6 characters</small>
+                  </div>
+                </div>
+
+
+                <div class="form-outline mb-4">
+                  <input 
+                  type="password"
+                  placeholder="Enter ConformPassword"  
+                  class="form-control form-control-lg"
+                  [(ngModel)]="conformpassword" 
+                  name="conformPassword" required 
+                  #correctpassword="ngModel" /> 
+                  <label class="form-label" for="form3Example4">Confirm password</label>
+                    <div *ngIf="correctpassword.errors && (correctpassword.invalid && correctpassword.touched)">
+                      <small class="text-danger" *ngIf="correctpassword.errors"> conformPassword Mandatory</small>
+                    </div>
+                    <small class="text-danger" *ngIf="ismatched"> not match with password</small>
+                </div>
+
+
+                <button 
+                [disabled]="RegisterForm.form.invalid" 
+                type="submit" 
+                class="btn btn-primary btn-block mb-4">
+                  Register
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
